@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  belongs_to :author, class_name: "User", foreign_key: :author_id
+  belongs_to :author, class_name: 'User', foreign_key: :author_id
   has_many :comments, foreign_key: 'post_id'
   has_many :likes
 
@@ -10,7 +10,6 @@ class Post < ApplicationRecord
   def recent_five_comments
     comments.order('created_at').last(5)
   end
-
 end
 
 # A method that updates the posts counter for a user.
