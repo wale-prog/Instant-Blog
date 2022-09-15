@@ -1,24 +1,56 @@
-# README
+# Instant Blog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> Project Description
 
-Things you may want to cover:
+> "Instant Blog" is a web application and a classic blog website where users can write post about any topics and give users the ability to interact with the app by liking and commenting on posts shared.
 
-* Ruby version
+## Built With
+- Ruby
+- Git
+- Github
+- Rubocop
+- RSpec
+- Stylelint
 
-* System dependencies
 
-* Configuration
+## Getting Started
+To get a local copy of the program running, follow these simple steps
+## Demo
+Coming soon...
 
-* Database creation
+### Prerequisites
+- IDE, preferably Visual Studio Code
 
-* Database initialization
+### Install
+- Ruby
+- Rails
 
-* How to run the test suite
+### Setup
+- Open a command line terminal (Git bash preferrably) and navigate to a directory where you would like to save the work folder using cd.
+- Clone the repository with git clone https://github.com/wale-prog/Instant-Blog/
+- To get the curent working tree, git fetch --all, then checkout to "dev" branch.
+- Finally, run the application by doing the following:
+  - navigate to the root directory with a command line preferably ubuntu terminal
+  - run 'bundle install'
+  - run 'rails serve'
 
-* Services (job queues, cache servers, search engines, etc.)
+## Authors
 
-* Deployment instructions
+👤 **Wale Olapetan**
 
-* ...
+- GitHub: [@wale-prog](https://github.com/wale-prog)
+- Twitter: [@Wale_Petan](https://twitter.com/wale_Petan)
+- LinkedIn: [@walepetan](https://www.linkedin.com/in/walepetan/)
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Hat tip to Microverse
