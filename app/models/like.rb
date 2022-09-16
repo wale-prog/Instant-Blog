@@ -7,4 +7,3 @@ class Like < ApplicationRecord
   end
 end
 
-# A method that updates the likes counter for a post.

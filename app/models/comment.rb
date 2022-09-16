@@ -7,4 +7,3 @@ class Comment < ApplicationRecord
   end
 end
 
-# A method that updates the comments counter for a post.
