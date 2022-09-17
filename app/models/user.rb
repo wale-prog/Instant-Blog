@@ -12,6 +12,4 @@ class User < ApplicationRecord
   def recent_three_posts
     posts.order('created_at').last(3)
   end
-  
 end
-

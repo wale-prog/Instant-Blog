@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  before :each do 
+  before :each do
     @author = User.create(name: 'Lilly', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Poland.')
     @post = Post.create(title: 'Rails rock', text: 'Rails presents the best developer\'s tools', author_id: @author.id)
     p Post.all
   end
 
-  describe 'Tests for User class validation' do 
+  describe 'Tests for User class validation' do
     it 'post should return invalid when post.title = nil' do
       p @post.valid?
       @post.title = nil
@@ -29,13 +29,11 @@ RSpec.describe Post, type: :model do
       @post.likes_counter = -2
       expect(@post.save).to eq(false)
     end
-
   end
 
   describe '#recent_five_comments' do
-    it 'something'do
+    it 'something' do
       expect(@post.recent_five_comments.count).to eq(@post.comments.order('created_at').last(5).count)
     end
   end
-
 end

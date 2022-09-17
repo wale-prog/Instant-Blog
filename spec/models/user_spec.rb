@@ -1,12 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  before(:each) do 
+  before(:each) do
     @user = User.new(name: 'Lilly', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Poland.')
   end
- 
-  describe 'Tests for User class validation' do   
 
+  describe 'Tests for User class validation' do
     it 'user should return invalid when name = nil' do
       @user.name = nil
       expect(@user.save).to eq(false)
@@ -27,15 +26,13 @@ RSpec.describe User, type: :model do
       @user.bio = nil
       @user.posts_counter = 2
       expect(@user.save).to eq(true)
-    end   
-
+    end
   end
 
-  describe '#User' do 
+  describe '#User' do
     it 'Should display the last three posts' do
       @user.save
       expect(@user.recent_three_posts.count).to eql(@user.posts.order('created_at').last(3).count)
     end
   end
-  
 end
