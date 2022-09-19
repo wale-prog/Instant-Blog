@@ -4,12 +4,10 @@ RSpec.describe Post, type: :model do
   before :each do
     @author = User.create(name: 'Lilly', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Poland.')
     @post = Post.create(title: 'Rails rock', text: 'Rails presents the best developer\'s tools', author_id: @author.id)
-    p Post.all
   end
 
   describe 'Tests for User class validation' do
     it 'post should return invalid when post.title = nil' do
-      p @post.valid?
       @post.title = nil
       expect(@post).to_not be_valid
     end
