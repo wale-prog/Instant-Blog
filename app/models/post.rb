@@ -4,8 +4,11 @@ class Post < ApplicationRecord
   has_many :comments, foreign_key: 'post_id'
   has_many :likes, foreign_key: 'post_id'
 
+  after_initialize :init
+
   # Validation
-  validates :title, presence: true, length: { maximum: 250 }
+  validates_presence_of :title, :text
+  validates :title, length: { maximum: 250 }
   validates :comments_counter, :likes_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   def update_posts_counter
@@ -14,5 +17,11 @@ class Post < ApplicationRecord
 
   def recent_five_comments
     comments.order('created_at').last(5)
+  end
+
+  def init
+    self.comments_counter ||= 0
+    self.likes_counter ||= 0
+    true
   end
 end
