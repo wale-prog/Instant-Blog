@@ -1,3 +1,11 @@
-<h1>User listing page for all users</h1>
+<div style='display:flex;flex-direction:column;gap:24px;justify-content:center'>
+  <% @users.each do |item| %>
+    <div style=display:flex;align-items:center;gap:16px>
+      <img src=<%= item.photo %> style= width:100px;height:100px alt="profile photo">      
+      <h2>Username: <%= item.name %></h2> 
+      <p>number of posts: <%= item.posts_counter %></p>      
+    </div>
+  <% end %>
+</div>
 
 
