@@ -8,7 +8,7 @@
   <% if post.comments.count > 0 %>
     <div style='border:solid 2px black; padding:14px; margin:14px'>
       <% post.recent_five_comments.each do |comment| %>
-        <p><%= @person.find(comment.author_id).name %>: <%= comment.text %> </p>
+        <p><%= comment.author.name %>: <%= comment.text %> </p>
       <% end %>
     </div>
   <% end %>    
