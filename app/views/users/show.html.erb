@@ -1,3 +1,14 @@
-<h1>User listing page for a specific user</h1>
-
-
+<div >
+  <%= render 'shared/user_info' %>
+</div>
+<div style='border:solid 2px black; padding:14px; margin-bottom:12px'>
+  <h4>Bio</h4>
+  <p><%= @user.bio%></p>
+</div>
+<% @user.recent_three_posts.each_with_index do |post, index| %>
+  <div style='border:solid 2px black; padding:14px; margin-bottom:12px;'>
+    <h3> <%= post.title %> <span> #<%= index + 1 %> </span> </h3>
+    <p> <%= post.text %> </p>
+    <p>Comments: <%= post.comments.count %> Likes: <%= post.likes.count %> </p>
+  </div>
+<% end %>

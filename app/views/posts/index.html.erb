@@ -1,1 +1,15 @@
-<h1>Posts listing for all posts in the database</h1>
+<%= render 'shared/user_info' %>
+<% @posts.each_with_index do |post, index| %>
+  <div style='border:solid 2px black;padding:14px;margin-bottom:8px'>
+    <h2><%= post.title %><span> #<%= index + 1 %> </span> </h3></h2>
+    <p><%= post.text %></p>
+    <p>Comments: <%= post.comments.count %> Likes: <%= post.likes.count %> </p>
+  </div>
+  <% if post.comments.count > 0 %>
+    <div style='border:solid 2px black; padding:14px; margin:14px'>
+      <% post.recent_five_comments.each do |comment| %>
+        <p><%= @person.find(comment.author_id).name %>: <%= comment.text %> </p>
+      <% end %>
+    </div>
+  <% end %>    
+<% end %>
