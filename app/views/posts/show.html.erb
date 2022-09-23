@@ -6,11 +6,13 @@
     </div>
     <p style='margin-right:100px'><%= @post.text %></p>
   </div>
+  <% if @post.comments.count > 0 %>
   <div style= ';border:solid 2px black; padding:14px; margin-bottom:12px'>
     <% @post.comments.each do |comment| %>
       <p><%= comment.author.name %>: <%= comment.text %> </p>
     <% end %>
   </div>
+  <% end %>
 </div>
 
 
