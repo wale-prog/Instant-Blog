@@ -1,1 +1,16 @@
-<h1>Post listing for an individually selected post</h1>
+<div style='margin-left:100px; margin-right:100px'>
+  <div style='border:solid 2px black; padding:14px; margin-bottom:12px; '>
+    <div style= 'display:flex; align-items:center; gap:24px; justify-content:space-between'>
+      <h4>Post #<%= @post.id %> <%= @post.title %> by <%= @post.author.name %> </h4>
+      <p style='margin-right:100px'>Comments: <%= @post.comments.count %> Likes: <%= @post.likes.count %></p>   
+    </div>
+    <p style='margin-right:100px'><%= @post.text %></p>
+  </div>
+  <div style= ';border:solid 2px black; padding:14px; margin-bottom:12px'>
+    <% @post.comments.each do |comment| %>
+      <p><%= comment.author.name %>: <%= comment.text %> </p>
+    <% end %>
+  </div>
+</div>
+
+
