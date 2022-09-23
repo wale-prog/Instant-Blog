@@ -34,7 +34,7 @@ Coming soon...
   - run 'bundle install'
   - run 'rails serve'
 
-## Authors
+## Author
 
 👤 **Wale Olapetan**
 
@@ -54,3 +54,7 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 - Hat tip to Microverse
+
+## 📝 License
+
+This project is [MIT](./LICENSE) licensed.
