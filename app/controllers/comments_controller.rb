@@ -7,6 +7,8 @@ class CommentsController < ApplicationController
     if @comment.save
       flash[:notice] = 'Comment created succefully'
       redirect_to user_post_comments_path
+    else
+      redirect_to user_post_comments_path
     end
   end
 
