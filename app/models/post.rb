@@ -16,7 +16,7 @@ class Post < ApplicationRecord
   end
 
   def recent_five_comments
-    comments.order('created_at').last(5)
+    comments.includes(:author).order('created_at').last(5)
   end
 
   def init
