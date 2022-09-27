@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-
   def new
     @comment = Comment.new
     @post = Post.find(params[:post_id])
@@ -25,7 +24,6 @@ class CommentsController < ApplicationController
     @comment.destroy
     redirect_to "/users/#{params[:user_id]}/posts/#{params[:post_id]}"
   end
-
 
   private
 
