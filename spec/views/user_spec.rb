@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :feature do  
+RSpec.describe User, type: :feature do
   before(:each) do
     @user1 = User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.')
     @user1.posts.create(title: 'This is my first post', text: 'This is the content of my first post')
     @user1.posts.create(title: 'This is my second post', text: 'This is the content of my second post')
-    @user2 = User.create(name: 'Lilly', photo:'https://unsplash.com/photos/F_-0BxGuVvo1', bio: 'Teacher from Poland')
+    @user2 = User.create(name: 'Lilly', photo: 'https://unsplash.com/photos/F_-0BxGuVvo1', bio: 'Teacher from Poland')
     @user2.posts.create(title: 'This is my first post', text: 'This is the content of my first post')
   end
   describe 'index page' do
@@ -37,7 +37,7 @@ RSpec.describe User, type: :feature do
     it 'should show user\'s name' do
       visit user_path(@user1.id)
       expect(page).to have_content('Tom')
-    end    
+    end
     it 'should show user\'s bio' do
       visit user_path(@user1.id)
       expect(page).to have_content('Teacher from Mexico.')
@@ -60,7 +60,7 @@ RSpec.describe User, type: :feature do
 
     it 'should redirect to user\'s posts page when button is clicked' do
       visit user_path(@user1.id)
-      click_link("See all posts by Tom")
+      click_link('See all posts by Tom')
       expect(current_path).to eq(user_posts_path(@user1.id))
     end
   end

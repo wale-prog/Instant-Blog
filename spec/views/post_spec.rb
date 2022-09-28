@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe Post, type: :feature do  
+RSpec.describe Post, type: :feature do
   before(:each) do
     @user1 = User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.')
-    @post = @user1.posts.create(title: 'This is my first post', text: 'This is the content of my first post')    
+    @post = @user1.posts.create(title: 'This is my first post', text: 'This is the content of my first post')
     @user1.posts.create(title: 'This is my second post', text: 'This is the content of my second post')
-    @user2 = User.create(name: 'Lilly', photo:'https://unsplash.com/photos/F_-0BxGuVvo1', bio: 'Teacher from Poland')
+    @user2 = User.create(name: 'Lilly', photo: 'https://unsplash.com/photos/F_-0BxGuVvo1', bio: 'Teacher from Poland')
     @user2.posts.create(title: 'This is my first post', text: 'This is the content of my first post')
     @post.comments.create(text: 'This is the first comment', author_id: @user2.id)
   end
@@ -21,22 +21,22 @@ RSpec.describe Post, type: :feature do
       expect(page).to have_content('Tom')
     end
 
-    it 'should see the number of posts by the user' do 
+    it 'should see the number of posts by the user' do
       visit user_posts_path(@user1.id)
       expect(page).to have_content('Number of posts: 2')
     end
 
-    it 'should see the title of posts' do 
+    it 'should see the title of posts' do
       visit user_posts_path(@user1.id)
       expect(page).to have_content('This is my first post')
     end
 
-    it 'should see post\'s body' do 
+    it 'should see post\'s body' do
       visit user_posts_path(@user1.id)
       expect(page).to have_content('This is the content of my first post')
     end
 
-    it 'should see the first comment' do 
+    it 'should see the first comment' do
       visit user_posts_path(@user1.id)
       expect(page).to have_content('This is the first comment')
     end
@@ -53,7 +53,7 @@ RSpec.describe Post, type: :feature do
 
     it 'should redirect to user\'s posts show page when a post is clicked' do
       visit user_posts_path(@user1.id)
-      click_link("This is my first post")
+      click_link('This is my first post')
       expect(current_path).to eq(user_post_path(@user1.id, @user1.posts.first.id))
     end
   end
