@@ -6,9 +6,15 @@
   <p><%= @user.bio%></p>
 </div>
 <% @user.recent_three_posts.each_with_index do |post, index| %>
-  <div style='border:solid 2px black; padding:14px; margin-bottom:12px;'>
-    <h3> <%= post.title %> <span> #<%= index + 1 %> </span> </h3>
-    <p> <%= post.text %> </p>
-    <p>Comments: <%= post.comments.count %> Likes: <%= post.likes.count %> </p>
-  </div>
+  <%= link_to "/users/#{@user.id}/posts/#{post.id}" do %>
+    <div style='border:solid 2px black; padding:14px; margin-bottom:12px;'>
+      <h3> <%= post.title %> <span> #<%= index + 1 %> </span> </h3>
+      <p> <%= post.text %> </p>
+      <p>Comments: <%= post.comments.count %> Likes: <%= post.likes.count %> </p>
+    </div>
+  <% end %>
 <% end %>
+<div style='display:flex; justify-content:center; margin-bottom:50px; margin-top:50px'>
+  <button style= 'width:200px;height:50px;'><%= link_to "See all posts by #{@user.name}", "/users/#{@user.id}/posts"  %></button>
+</div>
+
