@@ -80,3 +80,4 @@ group :test do
   gem 'webdrivers'
 end
 gem 'rubocop', '>= 1.0', '< 2.0'
+gem 'devise', '~> 4.8', '>= 4.8.1'
