@@ -1,27 +1,11 @@
-<nav style='display:flex;justify-content:space-between;align-items:center;background-color: beige'>
-  <div>
-    <ul style='list-style:none;display:flex;gap:32px;text-decoration:none'>
-      
-      <% if user_signed_in?  %>
-        <li><%= button_to "Sign out", destroy_user_session_path, method: :delete %> </li>      
-        <li><%= link_to 'Edit profile', edit_user_registration_path %> </li>
-      <% else %>
-        <li><%= link_to "Sign in", new_user_session_path %> </li>
-        <li><%= link_to 'Sign up', new_user_registration_path %> </li>
-      <% end %>
-
-    </ul>
-  </div>
-</nav>
-
 <div style='display:flex;flex-direction:column;gap:24px;justify-content:center'>
   <% @users.each do |item| %>
-    <%= link_to user_path(item) do %>
       <div style=display:flex;align-items:center;gap:16px>
         <img src=<%= item.photo %> style= width:100px;height:100px alt="profile photo">      
-        <h2>Username: <%= item.name %></h2> 
+        <h2>Username: <%= link_to user_path(item) do %>
+          <%= item.name %>
+        <% end %></h2>
         <p>number of posts: <%= item.posts.count %></p>      
       </div>
-    <% end %>
   <% end %>
 </div>
