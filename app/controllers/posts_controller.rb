@@ -13,10 +13,11 @@ class PostsController < ApplicationController
   end
 
   def create
-    @article = current_user.posts.new(post_params)
+    @user = User.find(params[:user_id])
+    @article = @user.posts.new(post_params)
     if @article.save
       flash[:notice] = 'Post created succefully'
-      redirect_to "/users/#{current_user.id}/posts/#{@article.id}"
+      redirect_to user_post_path(@user.id, @article.id)
     else
       render :new, status: :unprocessable_entity
     end
