@@ -6,7 +6,7 @@ class LikesController < ApplicationController
       redirect_to user_post_likes_path
       flash[:notice] = 'Like added successfully'
     else
-      flash[:alert] = 'Error!'
+      flash[:alert] = 'Error adding like'
     end
   end
 end
