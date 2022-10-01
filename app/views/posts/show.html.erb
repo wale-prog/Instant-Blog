@@ -1,18 +1,28 @@
 <div>
   <div style='border:solid 2px black; padding:14px; margin-bottom:12px; '>
     <div style= 'display:flex; align-items:center; gap:24px; justify-content:space-between'>
-      <h4>Post #<%= @post.id %> <%= @post.title %> by <%= @post.author.name %> </h4>
+      <h4> <%= @post.title %> by <%= @post.author.name %> </h4>
       <p style='margin-right:100px'>Comments: <%= @post.comments.count %> Likes: <%= @post.likes.count %></p>
       <p><%= render "shared/new_like" %></p>   
     </div>
-    <p style='margin-right:100px'><%= @post.text %></p>
+    <div style='display:flex; justify-content:space-between;margin-top:24px'>
+      <p style='margin-right:100px'><%= @post.text %></p>
+      <div style='display:flex;gap:24px;margin-right:110px'>
+        <%= button_to "Comment", new_user_post_comment_path(current_user.id, @post.id), method: :get %>
+        <% if can? :manage, @post %>
+          <%= button_to "Delete", user_post_path, method: :delete, data: { confirm: "Are you sure?" } %>
+        <% end %>
+      </div>      
+    </div>  
   </div>
   <% if @post.comments.count > 0 %>
   <div style= ';border:solid 2px black; padding:14px; margin-bottom:12px'>
     <% @post.comments.each do |comment| %>
       <div style = 'display:flex; justify-content:space-between;margin-right:300px'>
         <p><%= comment.author.name %>: <%= comment.text %> </p>
-        <button style='height:32px;'><%= link_to 'Delete', user_post_path %> </button>
+        <% if can? :manage, comment %>       
+          <%= button_to 'Delete', user_post_comment_path(current_user, @post.id, comment.id), method: :delete, data: {confirm: 'Are You Sure You Want to Delete This comment', turbo: false}, class: 'log_out' %> </button>
+        <% end %>
       </div>
     <% end %>
   </div>

@@ -2,7 +2,7 @@
   <% @users.each do |item| %>
       <div style=display:flex;align-items:center;gap:16px>
         <img src=<%= item.photo %> style= width:100px;height:100px alt="profile photo">      
-        <h2>Username: <%= link_to user_path(item) do %>
+        <h2><%= link_to user_path(item) do %>
           <%= item.name %>
         <% end %></h2>
         <p>number of posts: <%= item.posts.count %></p>      

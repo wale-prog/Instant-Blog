@@ -1,8 +1,11 @@
 class CommentsController < ApplicationController
-  def new
-    @comment = Comment.new
-    @post = Post.find(params[:post_id])
-  end
+  load_and_authorize_resource
+  before_action :authenticate_user!
+
+  # def new
+  #   @comment = Comment.new
+  #   @post = Post.find(params[:post_id])
+  # end
 
   def create
     @post = Post.find(params[:post_id])
@@ -10,8 +13,8 @@ class CommentsController < ApplicationController
     @comment.post_id = params[:post_id]
     @comment.update_comments_counter
     if @comment.save
+      redirect_to user_post_path(current_user, @comment.post_id)
       flash[:notice] = 'Comment created succefully'
-      redirect_to "/users/#{params[:user_id]}/posts/#{params[:post_id]}"
     else
       redirect_to user_post_comments_path
       flash[:notice] = 'Text field cannot be empty'
@@ -19,8 +22,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:post_id])
-    @comment = @post.comment.find(params[:id])
+    @comment = Comment.find(params[:id])
     @comment.destroy
     redirect_to "/users/#{params[:user_id]}/posts/#{params[:post_id]}"
   end

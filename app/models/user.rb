@@ -23,4 +23,8 @@ class User < ApplicationRecord
     self.posts_counter ||= 0
     true
   end
+
+  def admin?
+    self.role = 'admin'
+  end
 end
