@@ -81,6 +81,6 @@ group :test do
 end
 gem 'cancancan', '~> 3.4'
 gem 'devise', '~> 4.8', '>= 4.8.1'
-gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'devise-jwt'
 gem 'rack-cors'
+gem 'rubocop', '>= 1.0', '< 2.0'
