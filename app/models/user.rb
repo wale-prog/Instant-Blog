@@ -23,4 +23,5 @@ class User < ApplicationRecord
     self.posts_counter ||= 0
     true
   end
+ 
 end

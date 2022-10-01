@@ -1,9 +1,11 @@
 <h1>Create a new post</h1>
 
-<% if @article.errors.any? %>
+<%= link_to 'Back to posts', user_posts_path(current_user)  %>
+
+<% if @post.errors.any? %>
   <h4>The following errors are prevented the post from being saved</h4>
   <ul>
-    <% @article.errors.full_messages.each do |msg| %>
+    <% @post.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
   </ul>

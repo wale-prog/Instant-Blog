@@ -3,10 +3,12 @@
   <%= link_to "/users/#{@user.id}/posts/#{post.id}" do %>
     <div style='border:solid 2px black;padding:14px;margin-bottom:8px'>
       <h2><%= post.title %><span> #<%= index + 1 %> </span> </h3></h2>
+      <%= link_to 'Create Post', new_user_post_path(current_user) %>
+  <% end %>
       <p><%= post.text %></p>
       <p>Comments: <%= post.comments.count %> Likes: <%= post.likes.count %> </p>
     </div>
-  <% end %>
+  
   <% if post.comments.count > 0 %>
     <div style='border:solid 2px black; padding:14px; margin:14px'>
       <% post.recent_five_comments.each do |comment| %>
