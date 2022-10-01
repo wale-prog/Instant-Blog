@@ -1,8 +1,11 @@
 class CommentsController < ApplicationController
-  def new
-    @comment = Comment.new
-    @post = Post.find(params[:post_id])
-  end
+  load_and_authorize_resource
+  before_action :authenticate_user!
+
+  # def new
+  #   @comment = Comment.new
+  #   @post = Post.find(params[:post_id])
+  # end
 
   def create
     @post = Post.find(params[:post_id])

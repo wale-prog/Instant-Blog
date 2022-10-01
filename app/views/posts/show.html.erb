@@ -9,7 +9,7 @@
       <p style='margin-right:100px'><%= @post.text %></p>
       <div style='display:flex;gap:24px;margin-right:110px'>
         <%= button_to "Comment", new_user_post_comment_path(current_user.id, @post.id), method: :get %>
-        <% if can? :destroy, @post %>
+        <% if can? :manage, @post %>
           <%= button_to "Delete", user_post_path, method: :delete, data: { confirm: "Are you sure?" } %>
         <% end %>
       </div>      
@@ -20,8 +20,8 @@
     <% @post.comments.each do |comment| %>
       <div style = 'display:flex; justify-content:space-between;margin-right:300px'>
         <p><%= comment.author.name %>: <%= comment.text %> </p>
-        <% if can? :read, comment%>         
-          <%= button_to 'Delete', user_post_comment_path(current_user, @post.id, comment.id), method: :delete, data: {confirm: 'Are You Sure You Want to Delete This comment', turbo: false}, class: 'log_out' %> </button>       
+        <% if can? :manage, comment %>       
+          <%= button_to 'Delete', user_post_comment_path(current_user, @post.id, comment.id), method: :delete, data: {confirm: 'Are You Sure You Want to Delete This comment', turbo: false}, class: 'log_out' %> </button>
         <% end %>
       </div>
     <% end %>
